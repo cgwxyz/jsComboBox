@@ -19,9 +19,6 @@ var jsComboBox = function(node,opts) {
     });
       
     var data_source = [];
-    var prov_obj = '';
-    var city_obj = '';
-    var dist_obj = '';
     
     function __init__(){
         data_source = opts.source;
@@ -32,16 +29,9 @@ var jsComboBox = function(node,opts) {
     __init__();
     
     function __initwrapper__(){
-        
         var tmp_html = '<div class="jscombobox" id="'+opts.spec_id+'">';
         tmp_html = '<div class="jscombobox_input" id="'+opts.spec_id+'"><input type="text" value="" placeholder="请输入" name="'+opts.post_name+'"/></div></div>';
         $(node).parent().append($(tmp_html));
-        /*setTimeout(function(){
-            if(opts.prov!=null){
-                prov_obj.val(opts.prov);
-                initCity();
-            };
-        },1);*/
     }
     function _initPanel__(){
         var tmp_panel = '<div class="jscombobox_panel" id="'+opts.spec_id+'"><ul></ul></div>';
@@ -51,7 +41,6 @@ var jsComboBox = function(node,opts) {
         $('.jscombobox').css('width',$(node).css('width')).show();
         
         $('.jscombobox_input input').on('mouseup',function(){
-            //$('#log').append('<p>get focus</p>');
             var curr_offset = $(this).offset();
             $('.jscombobox_panel')
                 .css('top',(curr_offset.top+$(this).height()+7)+'px')
@@ -66,8 +55,6 @@ var jsComboBox = function(node,opts) {
             $('.jscombobox_panel').show();
         });
         $.each($(node).children(),function(key,val){
-            //console.log($(this).text());  
-            //console.log($(this).val()); 
             $('.jscombobox_panel ul').append('<li><a href="javascript:void(0)">'+$(this).text()+'</a></li>');
         });
         $('.jscombobox_panel ul li').on('mouseover',function(){
